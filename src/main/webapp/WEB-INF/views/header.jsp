@@ -17,28 +17,21 @@
 	<link rel="stylesheet" ref="/resources/static/css/style.css" />
 </head>
 <body>
-	<!-- registration modal body -->
-		
 
-		
-	<!--  -->
 	<div class="box-border overflow-hidden bg-gray-400 ">
 	  <a class="active float-left block text-black text-center p-7 p-8 text-2xl no-underline hover:bg-gray-700 hover:text-white" href="#home">Home</a>
 	  <div class="float-right mr-3">
-	  <c:set var="loggedUser" scope="session" value="Abir2"/>
+	  
 	  
 	   <c:choose>
-			  <c:when test="${loggedUser!='Abir'}">
-			   	<form:form action="/action_page.php" method="post" modelAttribute="userLoginDTO">
+			  <c:when test="${loggedEmployee==null}">
+			   	<form:form action="${pageContext.servletContext.contextPath}/auth/login" method="post" modelAttribute="userLoginDTO">
 				     <form:input class="p-1 mt-3 text-1xl" path="email" type="text" placeholder="Email" name="email" id="email" required="required"></form:input>
 				     <form:input class="p-1 mt-3 text-1xl" path="password" type="text" placeholder="Password" name="psw"></form:input>
 				     <button class="float-right p-1 mt-3 ml-3 text-1xl text-white bg-green-700 hover:bg-green-900" type="submit">Login</button>
 				</form:form>
-<%-- 				<form:form action="/action_page.php"> --%>
-<!-- 					<button class="float-right p-1 mt-3 ml-3 text-1xl text-white bg-green-700 hover:bg-green-900" type="submit">Register</button> -->
-<%-- 				</form:form> --%>
-				
-				<!-- registration modal button-->
+			
+				<!-- registration modal -->
 				<!-- Click on Modal Button -->
 				<button type="button" class="float-right p-1 mt-3 ml-3 text-1xl text-white bg-green-700 hover:bg-green-900" data-bs-toggle="modal" data-bs-target="#modalForm">
 				   	Register
@@ -52,7 +45,7 @@
 				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				            </div>
 				            <div class="modal-body">
-				                <form:form action="/action_page.php" method="post" modelAttribute="userRegistrationDTO">
+				                <form:form action="${pageContext.servletContext.contextPath}/auth/register" method="post" modelAttribute="userRegistrationDTO">
 				                	<div class="mb-3">
 				                        <label class="form-label">First name</label>
 				                        <form:input path="firstName" type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" />
@@ -87,8 +80,8 @@
 				
 			</c:when>
 			<c:otherwise>
-				  <form action="/action_page.php">
-				     <h1>${loggedUser}</h1>
+				  <form action="${pageContext.servletContext.contextPath}/auth/logout" method="post">
+				     <h1>${loggedEmployee.getFirstName()}</h1>
 				     <button class="float-right p-1 mt-3 ml-3 text-1xl bg-red-500 hover:bg-red-700" type="submit">LogOut</button>
 				   </form>
 			</c:otherwise>

@@ -50,27 +50,27 @@
 	   <tr>
 	    <td>${employee.id}</td>
 	    <td><a href="${pageContext.servletContext.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/show/${employee.id}">${employee.getFullName()}</a></td>
-	    <td>
-	    	<form action="${pageContext.servletContext.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/edit" method="post" >
-			    <input  type="hidden" name="id" value="${employee.id}"/>       
-			    <input  type="hidden" name="operation" value="edit"/>
-			    <button type="submit" class="btn btn-link">Edit</button>          
-			</form>
-	    </td>
+	    <c:if test="${loggedEmployee!=null}">
+	    	<c:if test="${loggedEmployee.getId()==employee.getId()}">	
+			    <td>
+			    	<form action="${pageContext.servletContext.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/edit" method="post" >
+					    <input  type="hidden" name="id" value="${employee.id}"/>       
+					    <input  type="hidden" name="operation" value="edit"/>
+					    <button type="submit" class="btn btn-link">Edit</button>          
+					</form>
+			    </td>
+	    	</c:if>
+	    </c:if>
+	    <!-- 
 	    <td>
 	    	<form action="${pageContext.servletContext.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/delete" method="post" >
 			    <input type="hidden" name="id" value="${employee.id}"/>       
 			    <input type="hidden" name="operation" value="delete"/>
-			    
-			    <!--
-			    <button type="submit" class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter">Delete</button>
-			    -->
-			    <!-- Button trigger modal -->
+
 				<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop${employee.id}">
 				  Delete
 				</button>
-				
-				<!-- Modal -->
+
 				<div class="modal fade" id="staticBackdrop${employee.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel${employee.id}" aria-hidden="true">
 				  <div class="modal-dialog">
 				    <div class="modal-content">
@@ -91,7 +91,7 @@
 				
 			</form>
 	    </td>
-	    
+	     -->
 	   </tr>
 	   </c:forEach>
    </c:if>
@@ -100,12 +100,12 @@
  </table>
  
  </div>
- <div class="flex flex-row ml-10 mt-2 ">
- <a href = "${pageContext.servletContext.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/add">
- 	<button type="button" class="btn btn-primary">Add new Employee Resume</button>
- </a>
+<!--  <div class="flex flex-row ml-10 mt-2 "> -->
+<%--  <a href = "${pageContext.servletContext.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/add"> --%>
+<!--  	<button type="button" class="btn btn-primary">Add new Employee Resume</button> -->
+<!--  </a> -->
  	
- </div>
+<!--  </div> -->
  </div>
  </div>
 </body>
