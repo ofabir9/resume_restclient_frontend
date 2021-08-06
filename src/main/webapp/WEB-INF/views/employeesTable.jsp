@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="bg-green-400 mx-auto max-w-screen-lg h-screen">
-
+<jsp:include page="header.jsp" />
 <div class="flex flex-col container max-w-screen-lg mx-auto bg-green-400 rounded-xl ">
 <div class="flex mt-20 mx-auto" >
 	<h1>

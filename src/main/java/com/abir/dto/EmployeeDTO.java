@@ -24,7 +24,7 @@ public class EmployeeDTO{
 	
 	@NotNull(message = "Mobile number cannot be null")
 	@NotEmpty(message = "Mobile number cannot be Empty")
-	@Pattern(regexp="(^$|[0-9]{8,13})",message="Provice valid mobile number")
+	@Pattern(regexp="(^$|[0-9]{8,13})",message="Provide valid mobile number")
 	private String mobile;
 	
 	@NotNull(message = "Github link cannot be null")
@@ -35,7 +35,7 @@ public class EmployeeDTO{
 	@URL(message = "Enter valid url")
 	private String linkedin;
 	
-	@Email(message = "Provice valid email address")
+	@Email(message = "Provide valid email address")
 	private String email;
 	
 	@NotEmpty(message = "Address cannot be Empty")

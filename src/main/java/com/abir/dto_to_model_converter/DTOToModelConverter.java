@@ -1,4 +1,4 @@
-package com.abir.converter;
+package com.abir.dto_to_model_converter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import com.abir.model.Employee;
 import com.abir.model.Project;
 import com.abir.model.Skill;
 
-public class Converter {
+public class DTOToModelConverter {
 
 	public static Employee employeeDTOToEmployee(EmployeeDTO employeeDTO) {
 		

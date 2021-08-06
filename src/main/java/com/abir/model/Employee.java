@@ -26,6 +26,7 @@ public class Employee {
 	
 	private String email;
 	
+	private String password;
 	
 	private String address;
 	
@@ -53,7 +54,7 @@ public class Employee {
 		this.achievements = achievements;
 	}
 	public Employee(int id, String firstName, String lastName, String mobile, String github, String linkedin,
-			String email, String address, List<Education> educations, List<Skill> skills, List<Project> projects,
+			String email, String password, String address, List<Education> educations, List<Skill> skills, List<Project> projects,
 			List<Achievement> achievements) {
 		super();
 		this.id = id;
@@ -63,6 +64,7 @@ public class Employee {
 		this.github = github;
 		this.linkedin = linkedin;
 		this.email = email;
+		this.password = password;
 		this.address = address;
 		this.educations = educations;
 		this.skills = skills;
@@ -143,6 +145,12 @@ public class Employee {
 	}
 	public String getFullName() {
 		return firstName+" "+lastName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 

@@ -26,8 +26,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.abir.dto.EmployeeDTO;
+import com.abir.dto.UserLoginDTO;
+import com.abir.dto.UserRegistrationDTO;
+import com.abir.dto_to_model_converter.DTOToModelConverter;
 import com.abir.model.Employee;
-import com.abir.converter.Converter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -58,6 +60,18 @@ public class EmployeeController {
 	public EmployeeDTO getEmployeeDTO()
 	{
 		return new EmployeeDTO();
+	}
+	
+	@ModelAttribute("userLoginDTO")
+	public UserLoginDTO getUserLoginDTO()
+	{
+		return new UserLoginDTO();
+	}
+	
+	@ModelAttribute("userRegistrationDTO")
+	public UserRegistrationDTO getUserRegistrationDTO()
+	{
+		return new UserRegistrationDTO();
 	}
 	
 	@GetMapping()
@@ -143,7 +157,7 @@ public class EmployeeController {
         	List<String> errors= map.get("errors") ;
 	        model.addAttribute("errors",errors);
 	        model.addAttribute("employeeDTO", employeeDTO);
-			model.addAttribute("employee", Converter.employeeDTOToEmployee(employeeDTO) );
+			model.addAttribute("employee", DTOToModelConverter.employeeDTOToEmployee(employeeDTO) );
 	        return "createResume";
 	    }
         
@@ -167,7 +181,7 @@ public class EmployeeController {
 		
 		Employee employee = mapper.readValue(response.getEntity(String.class), Employee.class) ;
 		
-		model.addAttribute("employeeDTO",Converter.employeeToEmployeeDTO( employee));
+		model.addAttribute("employeeDTO",DTOToModelConverter.employeeToEmployeeDTO( employee));
 		model.addAttribute("employee", employee);
 		return "editResume";
 	}
@@ -215,7 +229,7 @@ public class EmployeeController {
         	List<String> errors= map.get("errors") ;
 	        model.addAttribute("errors",errors);
 	        model.addAttribute("employeeDTO", employeeDTO);
-			model.addAttribute("employee", Converter.employeeDTOToEmployee(employeeDTO) );
+			model.addAttribute("employee", DTOToModelConverter.employeeDTOToEmployee(employeeDTO) );
 	        return "editResume";
 	    }
 		

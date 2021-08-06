@@ -33,7 +33,7 @@
  %>
  
  <div class="flex flex-col container max-w-screen-lg mx-auto bg-green-500 rounded-xl">
-      
+      <jsp:include page="header.jsp" />
       <!-- this section contains profile picture and contact informations -->
       <div class="flex flex-col md:flex-row pr-8 pl-8">
 
